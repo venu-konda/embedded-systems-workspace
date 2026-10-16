@@ -1,0 +1,59 @@
+                #include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+int main()
+{
+	int a[2],b[2],ret1,ret2;
+	if(pipe(a)==-1)
+	{
+		perror("pipe1");
+		exit(0);
+
+	}
+	if(pipe(b)==-1)
+	{
+		perror("pipe2");
+		exit(0);
+
+	}
+	ret1=fork();////////////////////////////
+	if(ret1==-1)
+	{
+		perror("fork1");
+		exit(0);
+	}
+	if(ret1==0)
+	{
+		close(a[0]);
+		close(b[0]);
+		close(b[1]);
+		dup2(a[1],1);
+		execlp("ps","ps","-el",NULL);
+	}
+	else
+	{
+		ret2=fork();
+		if(ret1==-1)
+		{
+			perror("fork2");
+			exit(0);
+		}
+		if(ret2==0)
+		{
+			close(a[1]);
+			close(b[0]);
+			dup2(a[0],0);
+			dup2(b[1],1);
+			execlp("grep","grep","dbus",NULL);	
+		}
+		else
+		{
+			close(a[0]);
+			close(a[1]);
+			close(b[1]);
+			dup2(b[0],0);
+			execlp("wc","wc","-l",NULL);
+		}
+
+	}
+}

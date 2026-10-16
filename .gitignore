@@ -1,0 +1,58 @@
+# ---------------------------------------------------------------------------
+# Keil uVision (ARM / C51) build output
+# ---------------------------------------------------------------------------
+# Project files (*.uvproj, *.uvmpw, *.Uv2) are kept. Everything the build
+# regenerates is ignored.
+*.o
+*.d
+*.crf
+*.axf
+*.hex
+*.map
+*.lnp
+*.tra
+*.htm
+*.sct
+*.plg
+*.dep
+*.lst
+*.LST
+*.OBJ
+*.__i
+*.uvopt
+*.uvgui
+*.uvgui.*
+*.Opt
+*.PWI
+*.DBK
+*.bak
+*.Bak
+
+# ---------------------------------------------------------------------------
+# GCC / host builds
+# ---------------------------------------------------------------------------
+*.out
+a.out
+*.exe
+*.gch
+*.so
+*.a
+
+# Extensionless host executables that live next to their sources
+blackberry/3
+Linux/s1
+
+# ---------------------------------------------------------------------------
+# Editor and OS noise
+# ---------------------------------------------------------------------------
+*.swp
+*.swo
+*.swn
+*~
+.DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# Archives (the unzipped folders are already tracked)
+# ---------------------------------------------------------------------------
+*.zip

@@ -1,0 +1,56 @@
+#include<stdio.h>
+int main()
+{
+	char a= '6';
+	printf(" the value of ascii code of %c is = %d\n",a,a);
+	  char af= 'b';
+        printf(" the value of ascii code of %c is = %d\n",af,af);
+	  char fa= 'c';
+        printf(" the value of ascii code of %c is = %d\n",fa,fa);
+	 char ad= 'd';
+        printf(" the value of ascii code of %c is = %d\n",ad,ad);
+          char da= 'e';
+        printf(" the value of ascii code of %c is = %d\n",da,da);
+          char ap= 'f';
+        printf(" the value of ascii code of %c is = %d\n",ap,ap);
+	 char pa= 'g';
+        printf(" the value of ascii code of %c is = %d\n",pa,pa);
+          char oa= 'h';
+        printf(" the value of ascii code of %c is = %d\n",oa,oa);
+          char ao= 'i';
+        printf(" the value of ascii code of %c is = %d\n",ao,ao);
+         char ia= 'j';
+        printf(" the value of ascii code of %c is = %d\n",ia,ia);
+          char ai= 'k';
+        printf(" the value of ascii code of %c is = %d\n",ai,ai);
+          char ay= 'l';
+        printf(" the value of ascii code of %c is = %d\n",ay,ay);
+	char at= 'm';
+        printf(" the value of ascii code of %c is = %d\n",at,at);
+          char ra= 'n';
+        printf(" the value of ascii code of %c is = %d\n",ra,ra);
+          char ea= 'o';
+        printf(" the value of ascii code of %c is = %d\n",ea,ea);
+         char wa= 'p';
+        printf(" the value of ascii code of %c is = %d\n",wa,wa);
+          char aq= 'q';
+        printf(" the value of ascii code of %c is = %d\n",aq,aq);
+          char xa= 'r';
+        printf(" the value of ascii code of %c is = %d\n",xa,xa);
+         char ax= 's';
+        printf(" the value of ascii code of %c is = %d\n",ax,ax);
+          char az= 't';
+        printf(" the value of ascii code of %c is = %d\n",az,az);
+          char za= 'u';
+        printf(" the value of ascii code of %c is = %d\n",za,za);
+         char ha= 'v';
+        printf(" the value of ascii code of %c is = %d\n",ha,ha);
+          char hd= 'w';
+        printf(" the value of ascii code of %c is = %d\n",hd,hd);
+          char ca= 'x';
+        printf(" the value of ascii code of %c is = %d\n",ca,ca);
+	 char ba= 'y';
+        printf(" the value of ascii code of %c is = %d\n",ba,ba);
+          char aa= 'z';
+        printf(" the value of ascii code of %c is = %d\n",aa,aa);
+}

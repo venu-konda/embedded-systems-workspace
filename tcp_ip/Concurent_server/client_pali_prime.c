@@ -1,0 +1,102 @@
+//tcp_client.c
+#include "headers.h"
+
+int main(int argc,char **argv)
+{
+	char buff[100];
+	int status;
+
+	if(argc<3)
+	{
+		puts("input format @cmdline : client.exe server_port_no server_ip_address");
+		return 0;    
+	}
+
+	puts("Creating client Socket...");
+	int fd;
+	fd=socket(AF_INET,SOCK_STREAM,0);
+	if(fd<0)
+	{
+		perror("socket");
+		return 0;
+	}	
+	puts("client socket created successfully");
+
+	puts("Binding & Connecting: ");
+	puts("Mapping the file descripted with Server's IP & Server Port ( Remote Socket Address)");
+	puts("Also mapping With Client's IP & Ephemeral Port (Local Socket Address)");
+	puts("Initiating 3-Way Handshake for Connection Establishement With Server...");
+	struct sockaddr_in addr;
+	int len=sizeof(addr);
+	int length;
+	addr.sin_family=AF_INET;
+	addr.sin_port=htons(atoi(argv[1]));
+	addr.sin_addr.s_addr=inet_addr(argv[2]);
+	if(connect(fd,(struct sockaddr *)&addr,len)<0)
+	{
+		perror("connect");
+		return 0;     
+	}
+	puts("Connection Success With Server");
+	int N,S,*p;
+
+	//	while(1)
+	{
+		recv(fd,buff,512,0);
+		printf("%s\n",buff);
+		puts("Enter some message to send to server...");
+		__fpurge(stdin);
+
+		fgets(buff,100,stdin);
+		if(buff[strlen(buff)-1]=='\n')
+			buff[strlen(buff)-1]='\0';    
+		if((strcmp(buff,"prime")==0)||(strcmp(buff,"palindrome")==0))
+		{
+			printf("sending message to server... : %s\n",buff);
+			status=send(fd,buff,strlen(buff)+1,0);
+			recv(fd,buff,100,0);
+			printf("%s\n",buff);
+			scanf("%d",&N);
+			send(fd,&N,4,0);
+			recv(fd,buff,100,0);
+			printf("%s\n",buff);
+			scanf("%d",&S);
+			send(fd,&S,4,0);
+			p=calloc(N,4);
+			recv(fd,p,N*4,0);
+
+			for(int i=0;i<N;i++)
+			{
+				printf("%d , ",p[i]);
+			}
+		}
+		else if((strcmp(buff,"factorial")==0))
+		{
+			printf("sending message to server... : %s\n",buff);
+			status=send(fd,buff,strlen(buff)+1,0);
+			recv(fd,buff,100,0);
+			printf("%s\n",buff);
+			scanf("%d",&N);
+			send(fd,&N,4,0);
+			recv(fd,&S,4,0);
+			printf("%d\n",S);
+		}
+
+	}
+
+	if(status<0)
+	{
+		perror("send"); 	     
+	}     
+	if(strcmp(buff,"quit")==0)
+		exit(0);
+	//	break;
+	/*ts("Message Sent");
+	  recv(fd,&length,sizeof length,0);
+	  printf("%d\n",length);*/
+
+
+puts("Client Terminating Connection With Server");
+close(fd);
+
+}	
